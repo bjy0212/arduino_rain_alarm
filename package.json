@@ -7,9 +7,9 @@
     "start": "node index.js"
   },
   "keywords": [
-	  "arduino",
-	  "rain_alarm",
-	  "weather_rss"
+    "arduino",
+    "rain_alarm",
+    "weather_rss"
   ],
   "author": "bjy000212",
   "license": "ISC",
