@@ -4,9 +4,18 @@ const crypto = require("crypto");
 const app = express();
 const PORT = 3000;//process.env.PORT;
 
+app.get("/", (req, res) => {
+    //introducing page
+});
+
+app.get("/register", (req, res) => {
+    //register page
+})
+
 app.post("/register", (req, res) => {
 	//register rain alarm kit to server and set the area information
 	const id = crypto.scryptSync(req.headers.code, req.headers.id, 64, { N: 1024 }).toString("hex");
+
 });
 
 app.post("/data", (req, res) => {
