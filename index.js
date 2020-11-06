@@ -41,11 +41,11 @@ function Manage(data) {
 	//data is a array of data read from rain sensor
 }
 
-function RaintoLED() {
+function RaintoLED(id) {
 	//change data in storage to color codes
 }
 
-function two(n) {
+function Two(n) {
     //makes n to %2d string
     //returns 08 if 8 is given
     if(n < 10) {
