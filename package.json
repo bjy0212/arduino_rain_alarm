@@ -1,12 +1,21 @@
 {
   "name": "arduino_rain_alarm_back",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "Backend Server for our arduino rain alarm product",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+	  "arduino",
+	  "rain_alarm",
+	  "weather_rss"
+  ],
+  "author": "bjy000212",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security"
+  }
 }
