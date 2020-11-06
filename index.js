@@ -25,7 +25,7 @@ app.post("/register", (req, res) => {
 app.post("/data", (req, res) => {
 	//get rain sensor data from arduino and store it in storage
 	const id = crypto.scryptSync(req.headers.secret, req.headers.id, 64, { N: 1024 }).toString("hex");
-    let data = req.body.data;
+    let rain = req.body.rain;
 });
 
 app.post("/sync", (req, res) => {
