@@ -45,4 +45,13 @@ function RaintoLED() {
 	//change data in storage to color codes
 }
 
+function two(n) {
+    //makes n to %2d string
+    //returns 08 if 8 is given
+    if(n < 10) {
+        return "0" + n;
+    }
+    return n + "";
+}
+
 app.listen(PORT, _=> console.log(`* Listening at ${PORT}`));
