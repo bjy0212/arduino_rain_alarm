@@ -11,22 +11,21 @@ app.get("/", (req, res) => {
 
 app.get("/register", (req, res) => {
     //register page
-})
+});
 
 app.post("/register", (req, res) => {
 	//register rain alarm kit to server and set the area information
-	const id = crypto.scryptSync(req.headers.code, req.headers.id, 64, { N: 1024 }).toString("hex");
-
+	const id = crypto.scryptSync(req.headers.secret, req.headers.id, 64, { N: 1024 }).toString("hex");
 });
 
 app.post("/data", (req, res) => {
 	//get rain sensor data from arduino and store it in storage
-	const id = crypto.scryptSync(req.headers.code, req.headers.id, 64, { N: 1024 }).toString("hex");
+	const id = crypto.scryptSync(req.headers.secret, req.headers.id, 64, { N: 1024 }).toString("hex");
 });
 
 app.post("/sync", (req, res) => {
-	//returns color code from storage data
-	const id = crypto.scryptSync(req.headers.code, req.headers.id, 64, { N: 1024 }).toString("hex");
+	//returns color data from storage data
+	const id = crypto.scryptSync(req.headers.secret, req.headers.id, 64, { N: 1024 }).toString("hex");
 });
 
 function RSS(area) {
