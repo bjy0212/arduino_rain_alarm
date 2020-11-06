@@ -16,6 +16,7 @@ app.get("/register", (req, res) => {
 app.post("/register", (req, res) => {
 	//register rain alarm kit to server and set the area information
 	const id = crypto.scryptSync(req.headers.secret, req.headers.id, 64, { N: 1024 }).toString("hex");
+    const area = req.headers.area;
 });
 
 app.post("/data", (req, res) => {
