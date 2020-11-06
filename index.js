@@ -1,9 +1,12 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const fs = require("fs");
 const crypto = require("crypto");
 const request = require("request");
 const app = express();
 const PORT = 3000;//process.env.PORT;
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
     //introducing page
@@ -22,6 +25,7 @@ app.post("/register", (req, res) => {
 app.post("/data", (req, res) => {
 	//get rain sensor data from arduino and store it in storage
 	const id = crypto.scryptSync(req.headers.secret, req.headers.id, 64, { N: 1024 }).toString("hex");
+    let data = req.body.data;
 });
 
 app.post("/sync", (req, res) => {
