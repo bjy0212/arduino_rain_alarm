@@ -3,9 +3,9 @@
 ***
 
 # 백엔드 개요
-> 시연용 서버는 heroku 무료 플랜으로 동작합니다.
-> [Github 링크](https://github.com/bjy0212/arduino_rain_alarm_back)
-> 아직 기능은 미구현 상태입니다.
+> 시연용 서버는 heroku 무료 플랜으로 동작합니다.  
+> [Github 링크](https://github.com/bjy0212/arduino_rain_alarm_back)  
+> 아직 기능은 미구현 상태입니다.  
 
 서버는 2개의 GET과 3개의 POST로 간단히 구성됩니다.
 
@@ -63,7 +63,7 @@
 ###### 내부 처리:
  - `RSS(area)` 함수를 호출해 시간대별 rss 정보를 업데이트하여, `./storage/rss/${id}.json`에 저장한다.
  - `Manage(data)` 함수를 호출해 body에서 받은 rain 데이터를 정리한다.  
-> 마찬가지로 `JSON`형식을 사용하며, `./storage/rain/${id}/${date}.json`에 저장한다.
+> 마찬가지로 `JSON`형식을 사용하며, `./storage/rain/${id}/${date}.json`에 저장한다.  
 > `time: 시간, data: 센서값`을 가지는 Object의 배열(Array) 형태로 저장하여, 추후에 빅데이터로 활용 하는 것 또한 가능하다.
 
 ***JSON 예시***
@@ -84,8 +84,8 @@
 
  - `RaintoLED(id)` 함수를 호출해 `Manage(data)`에서 저장한 비 센서 데이터와 `RSS(area)` 함수에서 저장한 rss 정보를 통합시켜서 최종적으로 LED의 **time**, **red**, **green**, **blue** 정보로 저장한다.
 
-> `./storage/LED/${id}/${data}.json`에 저장한다.
-> led의 rgb값을 가지는 Object의 배열(Array) 형태로 저장한다.
+> `./storage/LED/${id}/${data}.json`에 저장한다.  
+> led의 rgb값을 가지는 Object의 배열(Array) 형태로 저장한다.  
 > 색상 코드는 총 4가지가 있으며, 각각 `(255, 25, 0)`, `(0, 255, 37)`, `(0, 84, 255)`, `(128, 0, 255)`이다.
 
 ***JSON 예시***
