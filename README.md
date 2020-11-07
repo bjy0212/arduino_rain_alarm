@@ -9,6 +9,14 @@
 
 서버는 2개의 GET과 3개의 POST로 간단히 구성됩니다.
 
+> GET  
+> &nbsp;&nbsp;&nbsp;&nbsp;[~/](#~/)  
+> &nbsp;&nbsp;&nbsp;&nbsp;[~/register](#~/register)  
+> POST  
+> &nbsp;&nbsp;&nbsp;&nbsp;[~/register](#~/register)  
+> &nbsp;&nbsp;&nbsp;&nbsp;[~/data](#~/data)  
+> &nbsp;&nbsp;&nbsp;&nbsp;[~/sync](#~/sync)  
+
 ---
 
 ## Get
