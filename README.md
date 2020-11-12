@@ -35,7 +35,8 @@
 ```
 
 ###### 내부 처리:
- - `Manage(data)` 함수를 호출해 body에서 받은 rain 데이터를 정리.  
+ - `Certificate(id, secret)` 함수를 호출해 id와 secret 코드를 인증한다.
+ - `Manage(data, id)` 함수를 호출해 body에서 받은 rain 데이터를 정리.  
 > 마찬가지로 `JSON`형식을 사용하며, `./storage/rain/${id}/${date}.json`에 저장.  
 > `time: 시간, data: 센서값`을 가지는 Object의 배열(Array) 형태로 저장하여, 추후에 빅데이터로 활용 하는 것 또한 가능.
 
@@ -48,7 +49,7 @@
 ]
 ```
 
- - `RaintoLED(id)` 함수를 호출해 `Manage(data)`에서 저장한 비 센서 데이터와 `RSS(area)` 함수에서 저장한 rss 정보를 통합시켜서 최종적으로 LED의 **time**, **red**, **green**, **blue** 정보로 저장.
+ - `RaintoLED(id)` 함수를 호출해 `Manage(data, id)`에서 저장한 비 센서 데이터와 `RSS(area)` 함수에서 저장한 rss 정보를 통합시켜서 최종적으로 LED의 **time**, **red**, **green**, **blue** 정보로 저장.
 
 > `./storage/LED/${id}/${data}.json`에 저장.  
 > led의 rgb값을 가지는 Object의 배열(Array) 형태로 저장.  
@@ -78,6 +79,7 @@ LED 파트의  아두이노에 변형된 LED 정보를 전송.
  - secret: 비 알리미 기기별 고유 secret code
 
 ###### 내부 처리:
+ - `Certificate(id, secret)` 함수를 호출해 id와 secret 코드를 인증한다.
  - `./storage/LED/${id}/${date}.json`의 마지막 요소를 전송.
 
 ###### 반환 데이터:
