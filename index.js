@@ -9,7 +9,7 @@ app.use(express.static("pages"));
 
 const PORT = 3000;//process.env.PORT;
 
-if(!fs.existsSync(__dirname + "/storage") || !fs.existsSync(__dirname + "/storage/LED")) {
+if(!fs.existsSync(__dirname + "/storage/") || !fs.existsSync(__dirname + "/storage/LED")) {
 	fs.mkdir(__dirname + "/storage");
 	fs.writeFileSync(__dirname + "/storage/db.json", "{}");
 	fs.mkdir(__dirname + "/storage/LED");
@@ -20,13 +20,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post("/data", (req, res) => {
 	if(!Certificate(req.headers.id, req.headers.secret)) {
-		res.json({status: 403, message: "Forbidden: id or secret is wrong"});
+		res.json({status: 1, message: "Forbidden: id or secret is wrong"});
 		return;
 	}
 	//get rain sensor data from arduino and store it in storage
     let data = req.headers.rain * 1;
 	if(data === undefined) {
-		res.json({status: 403, message: "Forbidden: data is needed"});
+		res.json({status: 2, message: "Forbidden: header 'rain' is needed"});
 		return;
 	}
 
@@ -53,7 +53,7 @@ app.post("/data", (req, res) => {
 
 app.post("/sync", (req, res) => {
 	if(!Certificate(req.headers.id, req.headers.secret)) {
-		res.json({status: 403, message: "Forbidden: id or secret is wrong"});
+		res.json({status: 1, message: "Forbidden: id or secret is wrong"});
 		return;
 	}
 
@@ -72,7 +72,15 @@ app.post("/sync", (req, res) => {
 		db = JSON.parse(fs.readFileSync(__dirname + "/storage/LED/" + req.headers.id + "/" + dates + ".json"));
 	}
 
-	const led = db.length === 0 ? {red: 255, green: 0, blue: 0} : db[db.length - 1];
+	if(db.length === 0) {
+		res.json({
+			status: 3,
+			message: "Forbidden: no data in the storage"
+		});
+		return;
+	}
+
+	const led = db[db.length - 1];
 
 	res.json({
 		status: 200,
