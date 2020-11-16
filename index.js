@@ -18,6 +18,10 @@ if(!fs.existsSync(__dirname + "/storage/") || !fs.existsSync(__dirname + "/stora
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.get("/", (req, res) => {
+	res.send("Hello World");
+});
+
 app.post("/data", (req, res) => {
 	if(!Certificate(req.headers.id, req.headers.secret)) {
 		res.json({status: 1, message: "Forbidden: id or secret is wrong"});
