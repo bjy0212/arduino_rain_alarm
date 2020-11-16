@@ -8,9 +8,12 @@ const app = express();
 
 const PORT = 3000//process.env.PORT ? process.env.PORT : 3000;
 
-if(!fs.existsSync(__dirname + "/storage/") || !fs.existsSync(__dirname + "/storage/LED")) {
+if(!fs.existsSync(__dirname + "/storage/")) {
 	fs.mkdirSync(__dirname + "/storage/");
 	fs.writeFileSync(__dirname + "/storage/db.json", "{}");
+}
+
+if(!fs.existsSync(__dirname + "/storage/LED")) {
 	fs.mkdirSync(__dirname + "/storage/LED");
 	fs.mkdirSync(__dirname + "/storage/rain");
 }
