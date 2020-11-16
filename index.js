@@ -6,7 +6,7 @@ const app = express();
 
 //app.use(express.static("pages"));
 
-const PORT = 3000//process.env.PORT ? process.env.PORT : 3000;
+const PORT = process.env.PORT ? process.env.PORT : 3000;
 
 if(!fs.existsSync(__dirname + "/storage/")) {
 	fs.mkdirSync(__dirname + "/storage/");
