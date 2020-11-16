@@ -4,6 +4,7 @@ const fs = require("fs");
 const crypto = require("crypto");
 const request = require("request");
 const app = express();
+const https = require("https").createServer(app);
 
 app.use(express.static("pages"));
 
@@ -143,4 +144,4 @@ function two(n) {
 	return n + "";
 }
 
-app.listen(PORT, _=> console.log(`* Listening at ${PORT}`));
+https.listen(PORT, _=> console.log(`* Listening at ${PORT}`));
