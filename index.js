@@ -8,10 +8,10 @@ const https = require("https").createServer(app);
 
 app.use(express.static("pages"));
 
-const PORT = 3000;//process.env.PORT;
+const PORT = process.env.PORT;
 
 if(!fs.existsSync(__dirname + "/storage/") || !fs.existsSync(__dirname + "/storage/LED")) {
-	fs.mkdir(__dirname + "/storage");
+	fs.mkdir(__dirname + "/storage/");
 	fs.writeFileSync(__dirname + "/storage/db.json", "{}");
 	fs.mkdir(__dirname + "/storage/LED");
 	fs.mkdir(__dirname + "/storage/rain");
