@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const request = require("request");
 const app = express();
 
-app.use(express.static("pages"));
+//app.use(express.static("pages"));
 
 const PORT = 3000//process.env.PORT ? process.env.PORT : 3000;
 
@@ -14,6 +14,10 @@ if(!fs.existsSync(__dirname + "/storage/") || !fs.existsSync(__dirname + "/stora
 	fs.mkdirSync(__dirname + "/storage/LED");
 	fs.mkdirSync(__dirname + "/storage/rain");
 }
+
+app.get("/", (req, res) => {
+	res.send("hello world");
+})
 
 app.post("/data", (req, res) => {
 	if(!Certificate(req.headers.id, req.headers.secret)) {
