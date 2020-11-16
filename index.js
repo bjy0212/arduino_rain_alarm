@@ -1,27 +1,19 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const fs = require("fs");
 const crypto = require("crypto");
 const request = require("request");
 const app = express();
-const https = require("https").createServer(app);
 
 app.use(express.static("pages"));
 
-const PORT = process.env.PORT;
+const PORT = 3000//process.env.PORT ? process.env.PORT : 3000;
 
 if(!fs.existsSync(__dirname + "/storage/") || !fs.existsSync(__dirname + "/storage/LED")) {
-	fs.mkdir(__dirname + "/storage/");
+	fs.mkdirSync(__dirname + "/storage/");
 	fs.writeFileSync(__dirname + "/storage/db.json", "{}");
-	fs.mkdir(__dirname + "/storage/LED");
-	fs.mkdir(__dirname + "/storage/rain");
+	fs.mkdirSync(__dirname + "/storage/LED");
+	fs.mkdirSync(__dirname + "/storage/rain");
 }
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.get("/", (req, res) => {
-	res.send("Hello World");
-});
 
 app.post("/data", (req, res) => {
 	if(!Certificate(req.headers.id, req.headers.secret)) {
@@ -144,4 +136,4 @@ function two(n) {
 	return n + "";
 }
 
-https.listen(PORT, _=> console.log(`* Listening at ${PORT}`));
+app.listen(PORT, _=> console.log(`* Listening at ${PORT}`));
