@@ -4,6 +4,11 @@ const crypto = require("crypto");
 const request = require("request");
 const app = express();
 
+/*app.use(function(req, res, next) {
+    res.setHeader('Connection', 'close');
+    next();
+});*/
+
 //app.use(express.static("pages"));
 
 const PORT = process.env.PORT ? process.env.PORT : 3000;
@@ -19,6 +24,7 @@ if(!fs.existsSync(__dirname + "/storage/rain")) {
 
 app.get("/", (req, res) => {
 	res.send("*h");
+	console.log("get requested");
 });
 
 app.post("/data", (req, res) => {
@@ -36,7 +42,7 @@ app.post("/data", (req, res) => {
 
 	const date = new Date();
 	const dates = two(date.getFullYear()) + two(date.getMonth() + 1) + two(date.getDate());
-	const times = two(date.getHours) + two(date.getMinutes);
+	const times = two(date.getHours()) + two(date.getMinutes());
 
 	let rained = Manage(data, req.headers.id, dates, times) * 1;
 
@@ -52,7 +58,7 @@ app.post("/sync", (req, res) => {
 
 	const date = new Date();
 	const dates = two(date.getFullYear()) + two(date.getMonth() + 1) + two(date.getDate());
-	const times = two(date.getHours) + two(date.getMinutes);
+	const times = two(date.getHours()) + two(date.getMinutes());
 	//returns color data from storage data
     //색상 코드는 총 2가지 (255, 25, 0), (0, 84, 255).
 
@@ -110,4 +116,5 @@ function two(n) {
 	return n + "";
 }
 
-app.listen(PORT, _=> console.log(`* Listening at ${PORT}`));
+const server = app.listen(PORT, _=> console.log(`* Listening at ${PORT}`));
+server.keepAliveTimeout = 0;
