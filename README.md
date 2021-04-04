@@ -2,10 +2,8 @@
 
 ***
 
-# 백엔드 개요
-> 시연용 서버는 heroku 무료 플랜으로 동작.  
+# 백엔드 개요 
 > [Github 링크](https://github.com/bjy0212/arduino_rain_alarm_back)  
-> 아직 기능은 미구현 상태.  
 
 서버는 1개의 GET과 2개의 POST로 간단히 구성된다.
 
