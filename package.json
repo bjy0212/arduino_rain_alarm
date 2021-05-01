@@ -1,24 +1,23 @@
 {
-  "name": "arduino_rain_alarm_back",
-  "version": "0.0.1",
-  "description": "Backend Server for our arduino rain alarm product",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "keywords": [
-    "arduino",
-    "rain_alarm",
-    "weather_rss"
-  ],
-  "author": "bjy000212",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "crypto": "^1.0.1",
-    "express": "^4.17.1",
-    "fs": "0.0.1-security",
-    "https": "^1.0.0",
-    "request": "^2.88.2"
-  }
+    "name": "arduino_rain_alarm_back",
+    "version": "0.0.1",
+    "description": "Backend Server for our arduino rain alarm product",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js >log.txt"
+    },
+    "keywords": [
+        "arduino",
+        "rain_alarm",
+        "weather_rss"
+    ],
+    "author": "bjy000212",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "crypto": "^1.0.1",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "fs": "0.0.1-security"
+    }
 }
