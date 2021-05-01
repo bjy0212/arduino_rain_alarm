@@ -47,21 +47,6 @@
 ]
 ```
 
- - `RaintoLED(data, id, dates)` 함수를 호출해 `Manage(data, id, dates)`에서 저장한 비 센서 데이터와 `RSS(area)` 함수에서 저장한 rss 정보를 통합시켜서 최종적으로 LED의 **time**, **red**, **green**, **blue** 정보로 저장.
-
-> `./storage/LED/${id}/${data}.json`에 저장.  
-> led의 rgb값을 가지는 Object의 배열(Array) 형태로 저장.  
-> 색상 코드는 총 2가지가 있으며, 각각 `(255, 25, 0)`, `(0, 84, 255)`.  
-
-***JSON 예시***
-```json
-[
-    {"time": "0809", "red": 255, "green": 25, "blue": 0},
-    {"time": "0819", "red": 255, "green": 25, "blue": 0},
-    {"time": "0829", "red": 0, "green": 84, "blue": 255}
-]
-```
-
 ###### 반환 데이터:
  - status: 처리 결과
  - prev: 이전에 비가 왔는지에 관한 데이터
@@ -78,30 +63,10 @@ LED 파트의  아두이노에 변형된 LED 정보를 전송.
 
 ###### 내부 처리:
  - `Certificate(id, secret)` 함수를 호출해 id와 secret 코드를 인증한다.
- - `./storage/LED/${id}/${date}.json`의 마지막 요소를 전송.
+ - `./storage/rain/${id}/${date}.json`의 마지막 요소를 전송.
 
 ###### 반환 데이터:
- - red: rgb 데이터의 r값
- - green: rgb 데이터의 g값
- - blue: rgb 데이터의 b값
+ - data: 마지막 데이터
 
-***
-
-## status
-
-### 200
-
-ok. 전송 및 응답 성공
-
-### 1
-
-id와 secret 불일치
-
-### 2
-
-요청 헤더가 맞지 않음.
-
-### 3
-
-스토리지에 데이터가 없음.
-~/data 이전에 ~/sync 요청을 보낸 경우.
+> 0: 빨간색  
+> 1: 파란색  
