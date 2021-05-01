@@ -150,7 +150,6 @@ app.post('/sync', (req, res) => {
     const dates = two(date.getFullYear()) + two(date.getMonth() + 1) + two(date.getDate());
 
     //returns color data from storage data
-    //색상 코드는 총 2가지 (255, 25, 0), (0, 84, 255).
 
     let db = [];
 
